@@ -1,0 +1,60 @@
+#header {
+	min-width: 40%;
+	font-size: 5em;
+	height: fit-content;
+	padding: 1vw;
+	text-align: center;	
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#links {
+	width: 10%;
+	aspect-ratio: 1 / 1;
+}
+
+#blurb {
+	margin: auto;
+	width: 100%;
+	text-align: left;
+	height: fit-content;
+}
+
+.shelf {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: left;
+	margin-top: var(--row-gap);
+}
+
+.book {
+	margin: 2.5vw 2vw;
+	width: 13%;
+
+	color: black;
+}
+
+.book img {
+	width: 100%;
+	margin: 0;
+}
+
+.book:hover img {
+	position: relative;
+	bottom: 1.5vw;
+}
+
+.book p {
+	position: relative;
+	height: 0;
+	margin: 0;
+	visibility: hidden;
+	text-align: center;
+
+}
+
+.book:hover p {
+	visibility: visible;
+	bottom: 1.5vw;
+}

@@ -1,0 +1,66 @@
+#header {
+	width: 45%;
+	font-size: 5em;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#v-stretch {
+	--small-gap: calc(var(--row-gap) / 2);
+	--small-width: 11vw;
+}
+
+#subheader {
+	width: 40%;
+	margin: auto;
+	margin-top: var(--small-gap);
+}
+
+#links {
+	margin-left: auto;
+	width: var(--small-width);
+}
+
+#facts-block {
+	margin-right: auto;
+	width: var(--small-width);
+	padding-bottom: 1vw;
+}
+
+#facts-wrapper {
+	margin: 0 0.5vw;
+	text-align: left;
+	font-size: 1vw;
+}
+
+#facts-wrapper p {
+	margin: 0;
+	text-align: right;
+}
+
+#facts-wrapper strong {
+	color: var(--color-three);
+	margin-right: auto;
+	text-align: left;
+	float: left;
+}
+
+#content {
+	width: 50%;
+	margin: var(--row-gap) auto;
+	margin-top: var(--small-gap);
+	text-align: left;
+	align-content: center;
+}
+
+#content > div > h1 {
+	font-size: 2em;
+	text-align: right;
+}
+
+.frame {
+	position: absolute;
+
+    border: var(--border-width) black solid;
+    box-shadow: var(--shadow-width) var(--shadow-width) rgba(0, 0, 0, 0.75);
+}

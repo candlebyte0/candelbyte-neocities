@@ -1,0 +1,30 @@
+#header {
+	padding: 1vw 2vw;
+	width: fit-content;
+	margin: auto;
+}
+
+#guestbook {
+	width: 50%;
+	margin: auto;
+	margin-right: var(--row-gap);
+	height: 35vw;
+	display: flex;
+	flex-direction: column;
+}
+
+#guestbook iframe {
+	margin: auto;
+	width: 99%;
+	height: 35vw;
+	border: none;
+}
+
+#blurb {
+	width: 11vw;
+	text-align: left;
+}
+
+#column {
+	margin-right: auto;
+}

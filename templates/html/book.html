@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/basic.css">
+	<link rel="stylesheet" href="/styles/book.css">
+	<title>{{ book.title }} ꕥ candlebyte</title>
+</head>
+<body>
+	<div id="main">
+		<div id="top-row" class="block-row">
+			<div id="header" class="block">
+				{{ book.title }}
+			</div>
+		</div>	
+		<div class="block-row">
+			<div class="block-column" id="first-column">
+				<div class="block" id="facts">
+					<img src="{{book.cover}}">
+					<div id="facts-text">
+						<p>by<br><span>{{book.authors | commafy}}</span></p>
+					</div>
+				</div>
+				<div id="links" class="block">
+					<h1>links</h1>
+					{{ links | safe}}
+				</div>
+			</div>
+			<div class="block" id="review">
+				<div class="markdown-container">
+				{{ book.review | markdown | safe }}
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

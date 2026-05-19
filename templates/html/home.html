@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/basic.css">
+	<link rel="stylesheet" href="/styles/homepage.css">
+	<title>welcome ꕥ candlebyte</title>
+</head>
+<body>
+	<div id="main">
+		<div id="header" class="block">candlebyte</div>
+		<div class="block-row">
+			<div id="candle-div">
+				<img src="/assets/flame-animation.gif" id="flame"/>
+				<img src="/assets/clipart-candle.png" id="candle"/>
+			</div>
+			<div id="welcome" class="block">
+	            <div class="markdown-container">
+	            	{{ welcome | markdown | safe }}
+	            </div>
+			</div>
+			<div class="block" id="links">
+	            <h1>links</h1>
+	            {{ links | safe }}
+	        </div>
+		</div>
+		<div class="block-row" style="height: 13vw">
+			<div class="block" id="status">
+        		<h1>status</h1>
+        		<div id="status-section">
+        			<script>
+	        			const status_element = document.getElementById("status-section")
+
+	        			fetch("https://status.cafe/users/panaceapondwater/status.json")
+	        			    .then( response => response.json() )
+	        			    .then( status_json => {
+	        			        let time_ago = document.createElement('p')
+	        			        time_ago.style.color = "var(--color-three)"
+	        			        time_ago.innerText = status_json.face + " " + status_json.timeAgo + " " + status_json.face
+	        			        status_element.appendChild(time_ago)
+	        			        status_element.append(status_json.content)
+	        			        status_element.append(document.createElement('br'))
+	        			})
+        			</script>
+        		</div>
+        		<a href="https://status.cafe/users/panaceapondwater" target="_blank">
+        			<img style="width: 40%; margin-top: 1vw;" src="https://status.cafe/users/panaceapondwater/badge.png" alt="Status Cafe">
+        		</a>
+        	</div>
+	        <div class="block "id="marquee-wrapper" style="--animation-duration: calc(1.25s * {{ buttons | length }})">
+	        	<div class="marquee">
+	            	{%- for button in buttons %}
+		            <a class="marquee-item" target="_blank"
+	            	{%- for link_and_name in links_and_names -%}
+	            		{%- set button_name = strip_asset_path(asset_path=button) -%}
+	            		{%- if button_name == link_and_name.0 %} href="{{ link_and_name.1 }}" {%- endif -%}
+	            	{%- endfor -%}
+		            >
+		            	<img src="{{ button }}"/>
+		            </a>{%- endfor %}
+		        </div>
+	        	<div class="marquee">
+	        		{%- for button in buttons %}
+	            	<a class="marquee-item" target="_blank"
+	            	{%- for link_and_name in links_and_names -%}
+	            		{%- set button_name = strip_asset_path(asset_path=button) -%}
+	            		{%- if button_name == link_and_name.0 %} href="{{ link_and_name.1 }}" {%- endif -%}
+	            	{%- endfor -%}
+	            	>
+	            		<img src="{{ button }}"/>
+	            	</a>{%- endfor %}
+	        	</div>
+	        </div>
+	        <div class="block" id="reading">
+	        	<img src="{{ book.cover }}">
+	        	<div style="text-align: left;">
+		        	<h1 style="margin-bottom: 0;">currently reading</h1>
+		        	<span>{{ book.title }}</span><br>
+		        	by<br> 
+		        	<span>{{ book.authors | commafy }}</span>
+		        	<div class="markdown-container" style="margin: 0;">{{ book.review | markdown | safe }}</div>
+	        	</div>
+	        </div>
+        </div>
+	</div>
+</body>
+</html>

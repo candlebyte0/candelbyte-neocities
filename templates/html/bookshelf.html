@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/basic.css">
+	<link rel="stylesheet" href="/styles/bookshelf.css">
+	<title>bookshelf ꕥ candlebyte</title>
+</head>
+<body>
+	<div id="main">
+		<div id="top-row" class="block-row">
+			<div id="header" class="block">
+				bookshelf
+			</div>
+			<div id="links" class="block">
+				<h1>links</h1>
+				{{ links | safe }}
+			</div>
+			<div id="blurb" class="block">
+				<div class="markdown-container">
+					{{ intro | markdown | safe }}
+				</div>
+			</div>
+		</div>	
+		{% for shelf in shelves %}
+		<div class="block shelf">
+			{% for book in shelf %}
+				<a class="book" href="{{ book.link }}">
+					<img src="{{ book.cover }}">
+					<p>
+						{{ book.title }} <br>
+						{{ book.authors | commafy }}
+					</p>
+				</a>
+			{% endfor %}
+		</div>
+		{% endfor %}
+	</div>
+</body>
+</html>

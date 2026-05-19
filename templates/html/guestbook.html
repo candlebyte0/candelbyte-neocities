@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/basic.css">
+	<link rel="stylesheet" href="/styles/guestbook.css">
+	<title>guestbook ꕥ candlebyte</title>
+</head>
+<body>
+	<div id="main">
+		<div class="block" id="header">
+			guestbook
+		</div>
+		<div class="block-row">
+			<div class="block" id="guestbook">
+				<iframe id="guestbook-iframe" src="https://candlebyte.atabook.org"></iframe>
+			</div>
+			<div class="block-column" id="column">
+				<div class="block" id="links">
+					<h1>links</h1>
+					{{ links | safe }}
+				</div>
+				<div class="block" id="blurb">
+					<div class="markdown-container">
+						<p>thanks for signing! i want to see if anyone will visit this place, and i'd love to see other's websites!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

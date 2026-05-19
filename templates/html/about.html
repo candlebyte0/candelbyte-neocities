@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/basic.css">
+	<link rel="stylesheet" href="/styles/about.css">
+	<title>about me ꕥ candlebyte</title>
+</head>
+<body>
+	<div id="main">
+		<img class="frame" src="/assets/blackberry-fox.jpg" alt="Anonymous Artists. The Fox and the Blackberry Bush. circa 1481. The Illustrated Bartsch. Artstor. https://jstor.org/stable/community.12348104." style="
+			left: 14vw;
+			top: 20vw;
+			width: 15vw;
+		">
+		<img class="frame" alt="Latour, Bruno, and Catherine Porter. We have never been modern. Cambridge, MA: Harvard University Press, 1993, page 11." src="/assets/latour-diagram.png" style="
+			right: 9vw;
+			top: 39vw;
+			width: 18vw;
+		">
+		<img class="frame" src="/assets/dice.jpg" alt="Tommi Parzinger. Dice Motif, Textile Design. 1950–70. Brush and gouache, graphite on paper, lined, Sheet: 12 x 11 cm (4 3/4 x 4 5/16 in.). Cooper Hewitt, National Design Museum, Smithsonian Institution; Drawings, Prints, and Graphic Design Department; Gift of Mr. Donald Cameron. https://jstor.org/stable/community.10648579." style="
+			left: 15vw;
+			top: 58vw;
+			width: 10vw;
+		">
+		<div id="v-stretch">
+			<div class="block" id="header">
+				about me
+			</div>
+			<div class="block-row" id="subheader">
+				<div id="links" class="block">
+					<h1>links</h1>
+					{{ links | safe }}
+				</div>
+				<div class="block" id="facts-block">
+					<h1>facts</h1>
+					<div id="facts-wrapper">
+						<p><strong>name:</strong> gabbie</p>
+						<p><strong>pronouns:</strong> she/her</p>
+						<p><strong>age:</strong> early 20s</p>
+						<p><strong>fav color:</strong> purple</p>
+						<p><strong>fav animal:</strong> pigeon</p>
+					</div>
+				</div>
+			</div>
+			{%- for paragraph in about_paragraphs -%}
+			<div class="block" id="content">
+				<div class="markdown-container">
+				    {{ paragraph | markdown | safe }}
+				</div>
+			</div>
+			{%- endfor -%}
+		</div>
+	</div>
+</body>
+</html>
