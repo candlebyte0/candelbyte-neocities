@@ -60,7 +60,4 @@
 
 .frame {
 	position: absolute;
-
-    border: var(--border-width) black solid;
-    box-shadow: var(--shadow-width) var(--shadow-width) rgba(0, 0, 0, 0.75);
 }

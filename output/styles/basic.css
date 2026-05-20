@@ -18,6 +18,8 @@
     --color-one: #3b2441;
     --color-two: #F5F5F5;
     --color-three: #c17022;
+
+    --light-color-one: #796091;
 }
 
 
@@ -74,7 +76,7 @@ a:hover {
 .block {
     background-color: var(--color-two);
     border: var(--border-width) black solid;
-    box-shadow: var(--shadow-width) var(--shadow-width) rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0 0.5vw var(--shadow-width) rgba(0, 0, 0, 0.35);
     overflow-y: scroll;
 }
 
