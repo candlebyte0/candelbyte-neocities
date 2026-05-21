@@ -5,6 +5,11 @@
     text-align: center;
 }
 
+#header img {
+    height: 1em;
+    display: inline-block;
+}
+
 #welcome {
     anchor-name: --welcome;
     display: flex;
