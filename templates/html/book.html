@@ -27,10 +27,14 @@
 					{{ links | safe}}
 				</div>
 			</div>
-			<div class="block" id="review">
-				<div class="markdown-container">
-				{{ book.review | markdown | safe }}
+			<div class="block-column" id="review-column">
+				{% for section in book.review %}
+				<div class="block review">
+					<div class="markdown-container">
+						{{ section | markdown | safe }}
+					</div>
 				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

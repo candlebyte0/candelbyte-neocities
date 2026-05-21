@@ -1,21 +1,24 @@
+use std::collections::HashMap;
+
 use crate::PATHS;
 use obsidian_parser::prelude::*;
-use tera::Tera;
+use tera::{Tera, Value};
 
 #[derive(serde::Serialize)]
 pub struct Book {
     title: String,
     authors: Vec<String>,
     cover: String,
-    review: String,
+    review: Vec<String>,
     link: String,
 }
 
-pub fn render_bookshelf(tera: Tera, vault: &VaultOnDisk, mut context: tera::Context) -> Tera {
+pub fn render_bookshelf(mut tera: Tera, vault: &VaultOnDisk, mut context: tera::Context) -> Tera {
     //Collect book
     let mut books: Vec<Book> = vec![];
 
     std::fs::create_dir_all(PATHS.output_path.to_owned() + "/bookshelf").unwrap();
+    tera.register_function("drain_first", drain_first);
 
     for note in vault.notes() {
         if note
@@ -58,6 +61,18 @@ fn linkify_title(title: String) -> String {
         + ".html"
 }
 
+fn drain_first(args: &HashMap<String, Value>) -> Result<Value, tera::Error> {
+    match args.get("list") {
+        Some(tera_value) => match tera::from_value::<Vec<String>>(tera_value.clone()) {
+            Ok(mut list) => Ok(tera::to_value(list.drain(..1).collect::<Vec<String>>())?),
+            Err(_) => Err(tera::Error::msg(
+                "Can only remove the first item of a list of strings!",
+            )),
+        },
+        None => Err(tera::Error::msg("Please set the 'list' property!")),
+    }
+}
+
 impl TryFrom<&NoteOnDisk> for Book {
     type Error = obsidian_parser::note::note_on_disk::Error;
 
@@ -85,7 +100,7 @@ impl TryFrom<&NoteOnDisk> for Book {
             })
             .collect();
 
-        let review = value.content()?.to_string();
+        let review: Vec<String> = value.content()?.split("---").map(str::to_string).collect();
 
         Ok(Self {
             authors,

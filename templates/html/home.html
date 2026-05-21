@@ -75,7 +75,7 @@
 		        	<span>{{ book.title }}</span><br>
 		        	by<br> 
 		        	<span>{{ book.authors | commafy }}</span>
-		        	<div class="markdown-container" style="margin: 0;">{{ book.review | markdown | safe }}</div>
+		        	<div class="markdown-container" style="margin: 0;">{{ book.review.0 | markdown | safe }}</div>
 	        	</div>
 	        </div>
         </div>
